@@ -243,27 +243,28 @@ func (wa *WhatsAppClient) HandleMatrixEdit(ctx context.Context, edit *bridgev2.M
 }
 
 func (wa *WhatsAppClient) HandleMatrixMessageRemove(ctx context.Context, msg *bridgev2.MatrixMessageRemove) error {
-	log := zerolog.Ctx(ctx)
-	messageID, err := waid.ParseMessageID(msg.TargetMessage.ID)
-	if err != nil {
-		return fmt.Errorf("failed to parse target message ID: %w", err)
-	}
+	// log := zerolog.Ctx(ctx)
+	// messageID, err := waid.ParseMessageID(msg.TargetMessage.ID)
+	// if err != nil {
+	// 	return fmt.Errorf("failed to parse target message ID: %w", err)
+	// }
 
-	portalJID, err := waid.ParsePortalID(msg.Portal.ID)
-	if err != nil {
-		return fmt.Errorf("failed to parse portal ID: %w", err)
-	}
+	// portalJID, err := waid.ParsePortalID(msg.Portal.ID)
+	// if err != nil {
+	// 	return fmt.Errorf("failed to parse portal ID: %w", err)
+	// }
 
-	revokeMessage := wa.Client.BuildRevoke(messageID.Chat, messageID.Sender, messageID.ID)
+	// revokeMessage := wa.Client.BuildRevoke(messageID.Chat, messageID.Sender, messageID.ID)
 
-	extra := whatsmeow.SendRequestExtra{}
-	if strings.HasPrefix(string(msg.InputTransactionID), whatsmeow.WebMessageIDPrefix) {
-		extra.ID = types.MessageID(msg.InputTransactionID)
-	}
+	// extra := whatsmeow.SendRequestExtra{}
+	// if strings.HasPrefix(string(msg.InputTransactionID), whatsmeow.WebMessageIDPrefix) {
+	// 	extra.ID = types.MessageID(msg.InputTransactionID)
+	// }
 
-	resp, err := wa.Client.SendMessage(ctx, portalJID, revokeMessage, extra)
-	log.Trace().Any("response", resp).Msg("WhatsApp delete response")
-	return err
+	// resp, err := wa.Client.SendMessage(ctx, portalJID, revokeMessage, extra)
+	// log.Trace().Any("response", resp).Msg("WhatsApp delete response")
+	// return err
+	return nil
 }
 
 func (wa *WhatsAppClient) HandleMatrixReadReceipt(ctx context.Context, receipt *bridgev2.MatrixReadReceipt) error {
