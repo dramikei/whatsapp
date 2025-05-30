@@ -200,7 +200,7 @@ func (evt *WAMessageEvent) GetType() bridgev2.RemoteEventType {
 	case "edit":
 		return bridgev2.RemoteEventEdit
 	case "revoke":
-		return bridgev2.RemoteEventMessageRemove
+		return bridgev2.RemoteEventUnknown
 	case "ignore":
 		return bridgev2.RemoteEventUnknown
 	default:
