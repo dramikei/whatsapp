@@ -79,7 +79,7 @@ func getMessageType(waMsg *waE2E.Message) string {
 			if waMsg.GetProtocolMessage().GetKey() == nil {
 				return "ignore"
 			}
-			return "revoke"
+			return "ignore"
 		case waE2E.ProtocolMessage_MESSAGE_EDIT:
 			return "edit"
 		case waE2E.ProtocolMessage_EPHEMERAL_SETTING:
