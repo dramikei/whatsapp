@@ -96,7 +96,8 @@ func (wa *WhatsAppClient) handleWAEvent(rawEvt any) {
 	case *events.MarkChatAsRead:
 		wa.handleWAMarkChatAsRead(evt)
 	case *events.DeleteForMe:
-		wa.handleWADeleteForMe(evt)
+		// wa.handleWADeleteForMe(evt)
+		log.Debug().Type("event_type", rawEvt).Msg("delete for me event ignored")
 	case *events.DeleteChat:
 		wa.handleWADeleteChat(evt)
 	case *events.Mute:
